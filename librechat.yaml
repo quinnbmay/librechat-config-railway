@@ -94,10 +94,14 @@ mcpServers:
 
   # Workflow Automation
   n8n-railway:
-    type: http
-    url: https://czlonkowskin8n-mcp-railwaylatest-production-23d6.up.railway.app/mcp
-    headers:
-      Authorization: Bearer ${N8N_MCP_API_KEY}
+    type: stdio
+    command: npx
+    args:
+      - '-y'
+      - 'mcp-remote'
+      - 'https://czlonkowskin8n-mcp-railwaylatest-production-23d6.up.railway.app/mcp'
+      - '--header'
+      - 'Authorization: Bearer cwmWLcSwK2jIuwCAgtYeDDwztEkc1afLomiFszDd8Fc='
     timeout: 60000
     iconPath: /n8n-icon.svg
 
@@ -252,8 +256,8 @@ memory:
   tokenLimit: 15000
   personalize: true
   agent:
-    provider: "openai"
-    model: "gpt-4o-mini"
+    provider: "OpenRouter"
+    model: "openai/gpt-4o-mini"
     instructions: "You are Quinn's memory management assistant. Store and organize user information, project context, MCP server configurations, and development preferences accurately with timestamps."
     model_parameters:
       temperature: 0.1
