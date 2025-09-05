@@ -1,0 +1,297 @@
+# LibreChat Configuration with Quinn's MCP Servers
+# Combined Memory - LibreChat 🪶 Production Configuration
+# Version: 1.2.4
+
+version: 1.2.4
+
+# Cache settings
+cache: true
+
+# File storage configuration
+fileStrategy:
+  avatar: "local"
+  image: "local"
+  document: "local"
+
+# Custom interface configuration
+interface:
+  customWelcome: 'Welcome to Combined Memory - LibreChat! Your AI chat platform with integrated memory, n8n workflows, and development tools.'
+  fileSearch: true
+  endpointsMenu: true
+  modelSelect: true
+  parameters: true
+  sidePanel: true
+  presets: true
+  prompts: true
+  bookmarks: true
+  multiConvo: true
+  agents: true
+  peoplePicker:
+    users: true
+    groups: true
+    roles: true
+  marketplace:
+    use: false
+  fileCitations: true
+
+# Registration configuration
+registration:
+  socialLogins: ['github', 'google', 'discord']
+
+# Actions configuration
+actions:
+  allowedDomains:
+    - 'api.github.com'
+    - 'librechat.ai'
+    - 'railway.app'
+    - 'webflow.com'
+    - 'notion.so'
+    - 'firecrawl.dev'
+    - 'up.railway.app'
+    - 'combinedmemory.com'
+    - 'maymarketingseo.com'
+
+# MCP Servers Configuration
+# Quinn's Complete MCP Server Setup for Production
+mcpServers:
+  # Development & Project Management
+  railway:
+    type: stdio
+    command: npx
+    args:
+      - '@jasontanswe/railway-mcp'
+    timeout: 60000
+    iconPath: /railway-icon.svg
+
+  github:
+    type: streamablehttp
+    url: https://api.githubcopilot.com/mcp
+    timeout: 60000
+    iconPath: /github-icon.svg
+
+  notion:
+    type: stdio
+    command: npx
+    args:
+      - '@notionhq/notion-mcp-server'
+    timeout: 60000
+    iconPath: /notion-icon.svg
+
+  # Web Development & Design
+  webflow:
+    type: stdio
+    command: npx
+    args:
+      - '-y'
+      - 'webflow-mcp-server@0.6.0'
+    timeout: 60000
+    iconPath: /webflow-icon.svg
+
+  puppeteer:
+    type: stdio
+    command: npx
+    args:
+      - 'puppeteer-mcp-server'
+    timeout: 120000
+    iconPath: /puppeteer-icon.svg
+
+  # Workflow Automation
+  n8n-railway:
+    type: streamablehttp
+    url: https://czlonkowskin8n-mcp-railwaylatest-production-23d6.up.railway.app/mcp
+    headers:
+      Authorization: Bearer ${N8N_MCP_API_KEY}
+    timeout: 60000
+    iconPath: /n8n-icon.svg
+
+  # Data & Research
+  firecrawl:
+    type: stdio
+    command: npx
+    args:
+      - '-y'
+      - 'firecrawl-mcp'
+    timeout: 120000
+    iconPath: /firecrawl-icon.svg
+
+  supabase:
+    type: stdio
+    command: npx
+    args:
+      - '@supabase/mcp-server-supabase'
+    timeout: 60000
+    iconPath: /supabase-icon.svg
+
+  gomarble:
+    type: streamablehttp
+    url: https://apps.gomarble.ai/mcp-api/mcp
+    timeout: 60000
+    iconPath: /gomarble-icon.svg
+
+  # Marketing & Ads
+  apify-fb-ads:
+    type: streamablehttp
+    url: https://mcp.apify.com/?actors=igolaizola/facebook-ad-library-scraper
+    headers:
+      Authorization: Bearer ${APIFY_API_KEY}
+    timeout: 120000
+    iconPath: /apify-icon.svg
+
+  # Memory & AI Enhancement
+  quinns-memory:
+    type: streamablehttp
+    url: https://server.smithery.ai/@quinnbmay/quinns-memory-mcp-server/mcp?api_key=${QUINNS_MEMORY_API_KEY}&profile=${QUINNS_MEMORY_PROFILE}
+    timeout: 60000
+    iconPath: /memory-icon.svg
+
+  sequential-thinking:
+    type: stdio
+    command: npx
+    args:
+      - '@modelcontextprotocol/server-sequential-thinking'
+    timeout: 60000
+    iconPath: /thinking-icon.svg
+
+  # Documentation & Knowledge
+  docfork-mcp:
+    type: streamablehttp
+    url: https://server.smithery.ai/@docfork/mcp/mcp
+    timeout: 60000
+    iconPath: /docs-icon.svg
+
+  upstash-context-7-mcp:
+    type: streamablehttp
+    url: https://server.smithery.ai/@upstash/context7-mcp/mcp
+    timeout: 60000
+    iconPath: /context7-icon.svg
+
+  # Migration & Development Tools
+  smithery-ai-migration-guide:
+    type: streamablehttp
+    url: https://server.smithery.ai/@smithery-ai/migration-guide-mcp/mcp
+    timeout: 60000
+    iconPath: /smithery-icon.svg
+
+  # Utilities
+  time-mcp:
+    type: stdio
+    command: npx
+    args:
+      - '-y'
+      - 'time-mcp'
+    timeout: 30000
+    iconPath: /time-icon.svg
+
+  jotdown:
+    type: stdio
+    command: C:/Users/quinn/developer/mcps/jotdown/target/release/Jotdown.exe
+    timeout: 60000
+    iconPath: /jotdown-icon.svg
+
+# Endpoints configuration (using existing Railway setup)
+endpoints:
+  custom:
+    # Groq
+    - name: 'groq'
+      apiKey: '${GROQ_API_KEY}'
+      baseURL: 'https://api.groq.com/openai/v1/'
+      models:
+        default:
+          - 'llama-3.3-70b-versatile'
+          - 'llama3-70b-8192'
+          - 'llama3-8b-8192'
+          - 'mixtral-8x7b-32768'
+          - 'gemma2-9b-it'
+        fetch: false
+      titleConvo: true
+      titleModel: 'mixtral-8x7b-32768'
+      modelDisplayLabel: 'Groq'
+
+    # Mistral AI
+    - name: 'Mistral'
+      apiKey: '${MISTRAL_API_KEY}'
+      baseURL: 'https://api.mistral.ai/v1'
+      models:
+        default: ['mistral-large-latest', 'mistral-small-latest', 'pixtral-12b-2409']
+        fetch: true
+      titleConvo: true
+      titleModel: 'mistral-small-latest'
+      modelDisplayLabel: 'Mistral'
+      dropParams: ['stop', 'user', 'frequency_penalty', 'presence_penalty']
+
+    # OpenRouter
+    - name: 'OpenRouter'
+      apiKey: '${OPENROUTER_KEY}'
+      baseURL: 'https://openrouter.ai/api/v1'
+      headers:
+        x-librechat-body-parentmessageid: '{{LIBRECHAT_BODY_PARENTMESSAGEID}}'
+      models:
+        default: ['meta-llama/llama-3.3-70b-instruct', 'anthropic/claude-3.5-sonnet']
+        fetch: true
+      titleConvo: true
+      titleModel: 'meta-llama/llama-3.3-70b-instruct'
+      dropParams: ['stop']
+      modelDisplayLabel: 'OpenRouter'
+
+    # Fireworks
+    - name: 'Fireworks'
+      apiKey: '${FIREWORKS_API_KEY}'
+      baseURL: 'https://api.fireworks.ai/inference/v1'
+      models:
+        default: ['accounts/fireworks/models/llama-v3p3-70b-instruct']
+        fetch: true
+      titleConvo: true
+      titleModel: 'accounts/fireworks/models/llama-v3p3-70b-instruct'
+      modelDisplayLabel: 'Fireworks'
+
+    # Together AI
+    - name: 'Together'
+      apiKey: '${TOGETHERAI_API_KEY}'
+      baseURL: 'https://api.together.xyz/v1'
+      models:
+        default: ['meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo']
+        fetch: true
+      titleConvo: true
+      titleModel: 'meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo'
+      modelDisplayLabel: 'Together'
+
+    # Perplexity
+    - name: 'Perplexity'
+      apiKey: '${PERPLEXITY_API_KEY}'
+      baseURL: 'https://api.perplexity.ai'
+      models:
+        default: ['llama-3.1-sonar-large-128k-online', 'llama-3.1-sonar-small-128k-online']
+        fetch: false
+      titleConvo: true
+      titleModel: 'llama-3.1-sonar-small-128k-online'
+      modelDisplayLabel: 'Perplexity'
+
+# File configuration
+fileConfig:
+  endpoints:
+    assistants:
+      fileLimit: 10
+      fileSizeLimit: 50
+      totalSizeLimit: 200
+      supportedMimeTypes:
+        - "image/.*"
+        - "application/pdf"
+        - "text/.*"
+        - "application/vnd.openxmlformats-officedocument.*"
+    default:
+      totalSizeLimit: 100
+  serverFileSizeLimit: 500
+  avatarSizeLimit: 5
+
+# Memory configuration for user context
+memory:
+  disabled: false
+  validKeys: ["preferences", "work_info", "personal_info", "skills", "interests", "context", "projects", "mcp_configs"]
+  tokenLimit: 15000
+  personalize: true
+  agent:
+    provider: "openai"
+    model: "gpt-4o-mini"
+    instructions: "You are Quinn's memory management assistant. Store and organize user information, project context, MCP server configurations, and development preferences accurately with timestamps."
+    model_parameters:
+      temperature: 0.1
