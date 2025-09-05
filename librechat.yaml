@@ -98,63 +98,73 @@ endpoints:
       baseURL: 'https://openrouter.ai/api/v1'
       models:
         default: 
-          # Auto model selection
+          # Auto routing with tool support
           - 'openrouter/auto'
           
-          # Latest & Greatest (2025)
-          - 'qwen/qwen3-max'
-          - 'deepseek/deepseek-chat-v3.1'
-          - 'deepseek/deepseek-v3.1-base'
-          - 'anthropic/claude-opus-4.1'
-          - 'openai/gpt-5-chat'
-          - 'openai/gpt-5'
-          - 'openai/gpt-5-mini'
-          - 'openai/gpt-5-nano'
-          - 'mistralai/mistral-medium-3.1'
-          - 'mistralai/codestral-2508'
-          - 'x-ai/grok-code-fast-1'
-          - 'nousresearch/hermes-4-70b'
-          - 'nousresearch/hermes-4-405b'
-          
-          # OpenAI (Top 3)
+          # OpenAI - Tool Support ✅
           - 'openai/gpt-4o'
-          - 'openai/o1-preview'
           - 'openai/gpt-4o-mini'
+          - 'openai/gpt-4-turbo'
+          - 'openai/gpt-4'
+          - 'openai/gpt-3.5-turbo'
+          - 'openai/o1-preview'
+          - 'openai/o1-mini'
           
-          # Anthropic Claude (Top 3)
+          # Anthropic Claude - Tool Support ✅
           - 'anthropic/claude-3.5-sonnet'
           - 'anthropic/claude-3.5-haiku'
           - 'anthropic/claude-3-opus'
+          - 'anthropic/claude-3-sonnet'
+          - 'anthropic/claude-3-haiku'
           
-          # Google Gemini (Top 3)
+          # Google Gemini/Vertex - Tool Support ✅
           - 'google/gemini-2.0-flash-exp'
           - 'google/gemini-1.5-pro'
           - 'google/gemini-1.5-flash'
+          - 'google/gemini-pro'
+          - 'google/gemini-pro-vision'
           
-          # Meta LLaMA (Top 3)
-          - 'meta-llama/llama-3.3-70b-instruct'
-          - 'meta-llama/llama-3.1-405b-instruct'
-          - 'meta-llama/llama-3.1-70b-instruct'
-          
-          # Mistral AI (Top 3)
+          # Mistral AI - Tool Support ✅
           - 'mistralai/mistral-large-2411'
+          - 'mistralai/mistral-medium'
+          - 'mistralai/mistral-small'
           - 'mistralai/codestral-latest'
           - 'mistralai/pixtral-large-latest'
           
-          # DeepSeek (Top 3)
-          - 'deepseek/deepseek-chat-v3.1'
-          - 'deepseek/deepseek-coder'
-          - 'deepseek/deepseek-r1'
-          
-          # Qwen/Alibaba (Top 3)
-          - 'qwen/qwen3-max'
-          - 'qwen/qwen-2.5-72b-instruct'
-          - 'qwen/qwen3-coder-30b-a3b-instruct'
-          
-          # xAI Grok (Top 3)
+          # xAI Grok - Tool Support ✅
           - 'x-ai/grok-2-1212'
           - 'x-ai/grok-2-vision-1212'
           - 'x-ai/grok-beta'
+          
+          # Perplexity - Tool Support ✅
+          - 'perplexity/llama-3.1-sonar-large-128k-online'
+          - 'perplexity/llama-3.1-sonar-small-128k-online'
+          - 'perplexity/llama-3.1-sonar-large-128k-chat'
+          - 'perplexity/llama-3.1-sonar-small-128k-chat'
+          
+          # Meta LLaMA - Tool Support ✅
+          - 'meta-llama/llama-3.3-70b-instruct'
+          - 'meta-llama/llama-3.1-405b-instruct'
+          - 'meta-llama/llama-3.1-70b-instruct'
+          - 'meta-llama/llama-3.2-90b-vision-instruct'
+          
+          # DeepSeek - Tool Support ✅
+          - 'deepseek/deepseek-chat'
+          - 'deepseek/deepseek-coder'
+          
+          # Qwen/Alibaba - Tool Support ✅
+          - 'qwen/qwen-2.5-72b-instruct'
+          - 'qwen/qwen-2.5-coder-32b-instruct'
+          
+          # Additional Tool-Compatible Models
+          - 'cohere/command-r-plus'
+          - 'databricks/dbrx-instruct'
+          - 'microsoft/wizardlm-2-8x22b'
+          
+          # Latest & Greatest (2025) - Where Available
+          - 'deepseek/deepseek-chat-v3.1'
+          - 'anthropic/claude-opus-4.1'
+          - 'openai/gpt-5-chat'
           
         fetch: false
       titleConvo: true
