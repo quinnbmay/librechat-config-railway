@@ -1,4 +1,4 @@
-# LibreChat Configuration - Simplified
+# LibreChat Configuration - Simplified Setup
 # Combined Memory - LibreChat 🪶 Production Configuration
 # Version: 1.2.8
 
@@ -12,7 +12,7 @@ fileStrategy: "local"
 
 # Custom interface configuration
 interface:
-  customWelcome: 'Welcome to Combined Memory - LibreChat! Your streamlined AI chat platform.'
+  customWelcome: 'Welcome to Combined Memory - LibreChat! Your AI chat platform with integrated memory, n8n workflows, and development tools.'
   fileSearch: true
   endpointsMenu: true
   modelSelect: true
@@ -23,9 +23,13 @@ interface:
   bookmarks: true
   multiConvo: true
   agents: true
-  # MCP Servers UI configuration
-  mcpServers:
-    placeholder: 'MCP Servers'
+  peoplePicker:
+    users: true
+    groups: true
+    roles: true
+  marketplace:
+    use: false
+  fileCitations: true
 
 # Registration configuration
 registration:
@@ -34,11 +38,15 @@ registration:
 # Actions configuration
 actions:
   allowedDomains:
+    - 'api.github.com'
+    - 'librechat.ai'
     - 'railway.app'
     - 'webflow.com'
+    - 'notion.so'
+    - 'firecrawl.dev'
     - 'up.railway.app'
     - 'combinedmemory.com'
-    - 'server.smithery.ai'
+    - 'maymarketingseo.com'
 
 # MCP Servers Configuration - Essential Only
 mcpServers:
@@ -84,12 +92,10 @@ mcpServers:
 # Endpoints configuration - OpenRouter Only
 endpoints:
   custom:
-    # OpenRouter - Primary AI provider
+    # OpenRouter - Primary flagship models
     - name: 'OpenRouter'
       apiKey: '${OPENROUTER_KEY}'
       baseURL: 'https://openrouter.ai/api/v1'
-      headers:
-        x-librechat-body-parentmessageid: '{{LIBRECHAT_BODY_PARENTMESSAGEID}}'
       models:
         default: 
           - 'openrouter/auto'
@@ -107,6 +113,15 @@ endpoints:
 # File configuration
 fileConfig:
   endpoints:
+    assistants:
+      fileLimit: 10
+      fileSizeLimit: 50
+      totalSizeLimit: 200
+      supportedMimeTypes:
+        - "image/.*"
+        - "application/pdf"
+        - "text/.*"
+        - "application/vnd.openxmlformats-officedocument.*"
     default:
       totalSizeLimit: 100
   serverFileSizeLimit: 500
