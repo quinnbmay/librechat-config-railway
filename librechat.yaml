@@ -47,6 +47,9 @@ actions:
     - 'up.railway.app'
     - 'combinedmemory.com'
     - 'maymarketingseo.com'
+    - 'google.serper.dev'
+    - 'jina.ai'
+    - 'mcp.jina.ai'
 
 # MCP Servers Configuration - Essential Only
 mcpServers:
@@ -90,6 +93,15 @@ mcpServers:
     url: https://server.smithery.ai/@quinnbmay/quinns-memory-mcp-server/mcp?api_key=${QUINNS_MEMORY_API_KEY}&profile=${QUINNS_MEMORY_PROFILE}
     timeout: 60000
     iconPath: /memory-icon.svg
+
+  # Document Processing & AI Analysis
+  jina-mcp-server:
+    type: http
+    url: https://mcp.jina.ai/sse
+    headers:
+      Authorization: 'Bearer ${JINA_API_KEY}'
+    timeout: 60000
+    iconPath: /jina-icon.svg
 
 # Endpoints configuration - OpenRouter Only
 endpoints:
