@@ -98,8 +98,7 @@ endpoints:
       baseURL: 'https://openrouter.ai/api/v1'
       models:
         default: 
-          # Your Custom Preset & Auto
-          - '@preset/ai-stack'
+          # Auto model selection
           - 'openrouter/auto'
           
           # Latest & Greatest (2025)
@@ -117,98 +116,45 @@ endpoints:
           - 'nousresearch/hermes-4-70b'
           - 'nousresearch/hermes-4-405b'
           
-          # OpenAI Models
+          # OpenAI (Top 3)
           - 'openai/gpt-4o'
-          - 'openai/gpt-4o-mini'
-          - 'openai/gpt-4o-audio-preview'
           - 'openai/o1-preview'
-          - 'openai/o1-mini'
-          - 'openai/gpt-4-turbo'
-          - 'openai/gpt-4'
-          - 'openai/gpt-3.5-turbo'
-          - 'openai/gpt-oss-120b'
-          - 'openai/gpt-oss-20b'
+          - 'openai/gpt-4o-mini'
           
-          # Anthropic Claude
+          # Anthropic Claude (Top 3)
           - 'anthropic/claude-3.5-sonnet'
           - 'anthropic/claude-3.5-haiku'
           - 'anthropic/claude-3-opus'
-          - 'anthropic/claude-3-sonnet'
-          - 'anthropic/claude-3-haiku'
           
-          # Google Gemini
-          - 'google/gemini-2.5-flash-image-preview'
+          # Google Gemini (Top 3)
           - 'google/gemini-2.0-flash-exp'
           - 'google/gemini-1.5-pro'
           - 'google/gemini-1.5-flash'
-          - 'google/gemini-1.5-flash-8b'
           
-          # Meta LLaMA
+          # Meta LLaMA (Top 3)
           - 'meta-llama/llama-3.3-70b-instruct'
           - 'meta-llama/llama-3.1-405b-instruct'
           - 'meta-llama/llama-3.1-70b-instruct'
-          - 'meta-llama/llama-3.1-8b-instruct'
-          - 'meta-llama/llama-3.2-90b-vision-instruct'
-          - 'meta-llama/llama-3.2-11b-vision-instruct'
-          - 'meta-llama/llama-3.2-3b-instruct'
-          - 'meta-llama/llama-3.2-1b-instruct'
           
-          # Mistral AI
+          # Mistral AI (Top 3)
           - 'mistralai/mistral-large-2411'
-          - 'mistralai/mistral-medium'
-          - 'mistralai/mistral-small'
           - 'mistralai/codestral-latest'
           - 'mistralai/pixtral-large-latest'
-          - 'mistralai/pixtral-12b'
           
-          # DeepSeek
-          - 'deepseek/deepseek-chat'
+          # DeepSeek (Top 3)
+          - 'deepseek/deepseek-chat-v3.1'
           - 'deepseek/deepseek-coder'
           - 'deepseek/deepseek-r1'
-          - 'deepseek/deepseek-reasoner'
           
-          # Qwen (Alibaba)
+          # Qwen/Alibaba (Top 3)
+          - 'qwen/qwen3-max'
           - 'qwen/qwen-2.5-72b-instruct'
-          - 'qwen/qwen-2.5-32b-instruct'
-          - 'qwen/qwen-2.5-14b-instruct'
-          - 'qwen/qwen-2.5-7b-instruct'
-          - 'qwen/qwen3-30b-a3b-instruct'
           - 'qwen/qwen3-coder-30b-a3b-instruct'
           
-          # xAI Grok
+          # xAI Grok (Top 3)
           - 'x-ai/grok-2-1212'
           - 'x-ai/grok-2-vision-1212'
           - 'x-ai/grok-beta'
-          
-          # Cohere
-          - 'cohere/command-r-plus'
-          - 'cohere/command-r'
-          - 'cohere/command-r-plus-08-2024'
-          
-          # AI21 Jamba
-          - 'ai21/jamba-large-1.7'
-          - 'ai21/jamba-mini-1.7'
-          - 'ai21/jamba-instruct'
-          
-          # Perplexity (Online Models)
-          - 'perplexity/llama-3.1-sonar-large-128k-online'
-          - 'perplexity/llama-3.1-sonar-small-128k-online'
-          - 'perplexity/llama-3.1-sonar-large-128k-chat'
-          - 'perplexity/llama-3.1-sonar-small-128k-chat'
-          
-          # Specialized Models
-          - 'z-ai/glm-4.5v'
-          - 'baidu/ernie-4.5-21b-a3b'
-          - 'baidu/ernie-4.5-vl-28b-a3b'
-          - 'moonshotai/kimi-k2-0905'
-          
-          # Free Models
-          - 'deepseek/deepseek-chat-v3.1:free'
-          - 'openai/gpt-oss-120b:free'
-          - 'openai/gpt-oss-20b:free'
-          - 'meta-llama/llama-3.1-8b-instruct:free'
-          - 'meta-llama/llama-3.2-3b-instruct:free'
-          - 'meta-llama/llama-3.2-1b-instruct:free'
           
         fetch: false
       titleConvo: true
@@ -233,21 +179,8 @@ fileConfig:
   serverFileSizeLimit: 500
   avatarSizeLimit: 5
 
-# Code Interpreter configuration
-codeInterpreter:
-  enabled: true
-  apiKey: '${LIBRECHAT_CODE_API_KEY}'
-  baseURL: 'https://api.librechat.ai/v1'
-  timeout: 30000
-  supportedLanguages:
-    - 'python'
-    - 'javascript' 
-    - 'typescript'
-    - 'go'
-    - 'java'
-    - 'cpp'
-    - 'rust'
-    - 'r'
+# Note: Code Interpreter is configured via environment variables
+# LIBRECHAT_CODE_API_KEY is set in Railway environment
 
 # Memory configuration for user context
 memory:
