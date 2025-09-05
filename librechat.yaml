@@ -179,83 +179,25 @@ mcpServers:
     timeout: 30000
     iconPath: /time-icon.svg
 
-# Endpoints configuration (using existing Railway setup)
+# Endpoints configuration - Flagship models only
 endpoints:
   custom:
-    # Groq
-    - name: 'groq'
-      apiKey: '${GROQ_API_KEY}'
-      baseURL: 'https://api.groq.com/openai/v1/'
-      models:
-        default:
-          - 'llama-3.3-70b-versatile'
-          - 'llama3-70b-8192'
-          - 'llama3-8b-8192'
-          - 'mixtral-8x7b-32768'
-          - 'gemma2-9b-it'
-        fetch: false
-      titleConvo: true
-      titleModel: 'mixtral-8x7b-32768'
-      modelDisplayLabel: 'Groq'
-
-    # Mistral AI
-    - name: 'Mistral'
-      apiKey: '${MISTRAL_API_KEY}'
-      baseURL: 'https://api.mistral.ai/v1'
-      models:
-        default: ['mistral-large-latest', 'mistral-small-latest', 'pixtral-12b-2409']
-        fetch: true
-      titleConvo: true
-      titleModel: 'mistral-small-latest'
-      modelDisplayLabel: 'Mistral'
-      dropParams: ['stop', 'user', 'frequency_penalty', 'presence_penalty']
-
-    # OpenRouter - RESTORED
+    # OpenRouter - Primary flagship models
     - name: 'OpenRouter'
       apiKey: '${OPENROUTER_KEY}'
       baseURL: 'https://openrouter.ai/api/v1'
       headers:
         x-librechat-body-parentmessageid: '{{LIBRECHAT_BODY_PARENTMESSAGEID}}'
       models:
-        default: ['meta-llama/llama-3.3-70b-instruct', 'anthropic/claude-3.5-sonnet']
-        fetch: true
+        default: 
+          - 'meta-llama/llama-3.3-70b-instruct'
+          - 'anthropic/claude-3.5-sonnet'
+          - 'openai/gpt-4o'
+        fetch: false
       titleConvo: true
       titleModel: 'meta-llama/llama-3.3-70b-instruct'
       dropParams: ['stop']
       modelDisplayLabel: 'OpenRouter'
-
-    # Fireworks
-    - name: 'Fireworks'
-      apiKey: '${FIREWORKS_API_KEY}'
-      baseURL: 'https://api.fireworks.ai/inference/v1'
-      models:
-        default: ['accounts/fireworks/models/llama-v3p3-70b-instruct']
-        fetch: true
-      titleConvo: true
-      titleModel: 'accounts/fireworks/models/llama-v3p3-70b-instruct'
-      modelDisplayLabel: 'Fireworks'
-
-    # Together AI
-    - name: 'Together'
-      apiKey: '${TOGETHERAI_API_KEY}'
-      baseURL: 'https://api.together.xyz/v1'
-      models:
-        default: ['meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo']
-        fetch: true
-      titleConvo: true
-      titleModel: 'meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo'
-      modelDisplayLabel: 'Together'
-
-    # Perplexity
-    - name: 'Perplexity'
-      apiKey: '${PERPLEXITY_API_KEY}'
-      baseURL: 'https://api.perplexity.ai'
-      models:
-        default: ['llama-3.1-sonar-large-128k-online', 'llama-3.1-sonar-small-128k-online']
-        fetch: false
-      titleConvo: true
-      titleModel: 'llama-3.1-sonar-small-128k-online'
-      modelDisplayLabel: 'Perplexity'
 
 # File configuration
 fileConfig:
