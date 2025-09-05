@@ -1,8 +1,8 @@
-# LibreChat Configuration with Quinn's MCP Servers
+# LibreChat Configuration - Simplified
 # Combined Memory - LibreChat 🪶 Production Configuration
-# Version: 1.2.4
+# Version: 1.2.8
 
-version: 1.2.4
+version: 1.2.8
 
 # Cache settings
 cache: true
@@ -12,7 +12,7 @@ fileStrategy: "local"
 
 # Custom interface configuration
 interface:
-  customWelcome: 'Welcome to Combined Memory - LibreChat! Your AI chat platform with integrated memory, n8n workflows, and development tools.'
+  customWelcome: 'Welcome to Combined Memory - LibreChat! Your streamlined AI chat platform.'
   fileSearch: true
   endpointsMenu: true
   modelSelect: true
@@ -23,13 +23,9 @@ interface:
   bookmarks: true
   multiConvo: true
   agents: true
-  peoplePicker:
-    users: true
-    groups: true
-    roles: true
-  marketplace:
-    use: false
-  fileCitations: true
+  # MCP Servers UI configuration
+  mcpServers:
+    placeholder: 'MCP Servers'
 
 # Registration configuration
 registration:
@@ -38,18 +34,13 @@ registration:
 # Actions configuration
 actions:
   allowedDomains:
-    - 'api.github.com'
-    - 'librechat.ai'
     - 'railway.app'
     - 'webflow.com'
-    - 'notion.so'
-    - 'firecrawl.dev'
     - 'up.railway.app'
     - 'combinedmemory.com'
-    - 'maymarketingseo.com'
+    - 'server.smithery.ai'
 
-# MCP Servers Configuration
-# Quinn's Complete MCP Server Setup for Production
+# MCP Servers Configuration - Essential Only
 mcpServers:
   # Development & Project Management
   railway:
@@ -60,20 +51,6 @@ mcpServers:
     timeout: 60000
     iconPath: /railway-icon.svg
 
-  github:
-    type: http
-    url: https://api.githubcopilot.com/mcp
-    timeout: 60000
-    iconPath: /github-icon.svg
-
-  notion:
-    type: stdio
-    command: npx
-    args:
-      - '@notionhq/notion-mcp-server'
-    timeout: 60000
-    iconPath: /notion-icon.svg
-
   # Web Development & Design
   webflow:
     type: stdio
@@ -83,14 +60,6 @@ mcpServers:
       - 'webflow-mcp-server@0.6.0'
     timeout: 60000
     iconPath: /webflow-icon.svg
-
-  puppeteer:
-    type: stdio
-    command: npx
-    args:
-      - 'puppeteer-mcp-server'
-    timeout: 120000
-    iconPath: /puppeteer-icon.svg
 
   # Workflow Automation
   n8n-railway:
@@ -105,39 +74,6 @@ mcpServers:
     timeout: 60000
     iconPath: /n8n-icon.svg
 
-  # Data & Research
-  firecrawl:
-    type: stdio
-    command: npx
-    args:
-      - '-y'
-      - 'firecrawl-mcp'
-    timeout: 120000
-    iconPath: /firecrawl-icon.svg
-
-  supabase:
-    type: stdio
-    command: npx
-    args:
-      - '@supabase/mcp-server-supabase'
-    timeout: 60000
-    iconPath: /supabase-icon.svg
-
-  gomarble:
-    type: http
-    url: https://apps.gomarble.ai/mcp-api/mcp
-    timeout: 60000
-    iconPath: /gomarble-icon.svg
-
-  # Marketing & Ads
-  apify-fb-ads:
-    type: http
-    url: https://mcp.apify.com/?actors=igolaizola/facebook-ad-library-scraper
-    headers:
-      Authorization: Bearer ${APIFY_API_KEY}
-    timeout: 120000
-    iconPath: /apify-icon.svg
-
   # Memory & AI Enhancement
   quinns-memory:
     type: http
@@ -145,48 +81,10 @@ mcpServers:
     timeout: 60000
     iconPath: /memory-icon.svg
 
-  sequential-thinking:
-    type: stdio
-    command: npx
-    args:
-      - '@modelcontextprotocol/server-sequential-thinking'
-    timeout: 60000
-    iconPath: /thinking-icon.svg
-
-  # Documentation & Knowledge
-  docfork-mcp:
-    type: http
-    url: https://server.smithery.ai/@docfork/mcp/mcp
-    timeout: 60000
-    iconPath: /docs-icon.svg
-
-  upstash-context-7-mcp:
-    type: http
-    url: https://server.smithery.ai/@upstash/context7-mcp/mcp
-    timeout: 60000
-    iconPath: /context7-icon.svg
-
-  # Migration & Development Tools
-  smithery-ai-migration-guide:
-    type: http
-    url: https://server.smithery.ai/@smithery-ai/migration-guide-mcp/mcp
-    timeout: 60000
-    iconPath: /smithery-icon.svg
-
-  # Utilities
-  time-mcp:
-    type: stdio
-    command: npx
-    args:
-      - '-y'
-      - 'time-mcp'
-    timeout: 30000
-    iconPath: /time-icon.svg
-
-# Endpoints configuration - Curated flagship models
+# Endpoints configuration - OpenRouter Only
 endpoints:
   custom:
-    # OpenRouter - Primary flagship models
+    # OpenRouter - Primary AI provider
     - name: 'OpenRouter'
       apiKey: '${OPENROUTER_KEY}'
       baseURL: 'https://openrouter.ai/api/v1'
@@ -206,44 +104,9 @@ endpoints:
       dropParams: ['stop']
       modelDisplayLabel: 'OpenRouter'
 
-    # Groq - Fast inference models
-    - name: 'Groq'
-      apiKey: '${GROQ_API_KEY}'
-      baseURL: 'https://api.groq.com/openai/v1'
-      models:
-        default:
-          - 'llama-3.3-70b-versatile'
-          - 'mixtral-8x7b-32768'
-        fetch: false
-      titleConvo: true
-      titleModel: 'llama-3.3-70b-versatile'
-      modelDisplayLabel: 'Groq'
-
-    # Mistral - European AI models
-    - name: 'Mistral'
-      apiKey: '${MISTRAL_API_KEY}'
-      baseURL: 'https://api.mistral.ai/v1'
-      models:
-        default:
-          - 'mistral-large-2411'
-          - 'mistral-medium-2312'
-        fetch: false
-      titleConvo: true
-      titleModel: 'mistral-large-2411'
-      modelDisplayLabel: 'Mistral'
-
 # File configuration
 fileConfig:
   endpoints:
-    assistants:
-      fileLimit: 10
-      fileSizeLimit: 50
-      totalSizeLimit: 200
-      supportedMimeTypes:
-        - "image/.*"
-        - "application/pdf"
-        - "text/.*"
-        - "application/vnd.openxmlformats-officedocument.*"
     default:
       totalSizeLimit: 100
   serverFileSizeLimit: 500
