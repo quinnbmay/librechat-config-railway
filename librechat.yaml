@@ -179,7 +179,7 @@ mcpServers:
     timeout: 30000
     iconPath: /time-icon.svg
 
-# Endpoints configuration - Flagship models only
+# Endpoints configuration - Curated flagship models
 endpoints:
   custom:
     # OpenRouter - Primary flagship models
@@ -193,11 +193,39 @@ endpoints:
           - 'meta-llama/llama-3.3-70b-instruct'
           - 'anthropic/claude-3.5-sonnet'
           - 'openai/gpt-4o'
+          - 'google/gemini-2.0-flash-exp'
+          - 'mistralai/mistral-large-2411'
         fetch: false
       titleConvo: true
       titleModel: 'meta-llama/llama-3.3-70b-instruct'
       dropParams: ['stop']
       modelDisplayLabel: 'OpenRouter'
+
+    # Groq - Fast inference models
+    - name: 'Groq'
+      apiKey: '${GROQ_API_KEY}'
+      baseURL: 'https://api.groq.com/openai/v1'
+      models:
+        default:
+          - 'llama-3.3-70b-versatile'
+          - 'mixtral-8x7b-32768'
+        fetch: false
+      titleConvo: true
+      titleModel: 'llama-3.3-70b-versatile'
+      modelDisplayLabel: 'Groq'
+
+    # Mistral - European AI models
+    - name: 'Mistral'
+      apiKey: '${MISTRAL_API_KEY}'
+      baseURL: 'https://api.mistral.ai/v1'
+      models:
+        default:
+          - 'mistral-large-2411'
+          - 'mistral-medium-2312'
+        fetch: false
+      titleConvo: true
+      titleModel: 'mistral-large-2411'
+      modelDisplayLabel: 'Mistral'
 
 # File configuration
 fileConfig:
