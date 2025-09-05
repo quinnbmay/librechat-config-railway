@@ -107,16 +107,15 @@ mcpServers:
     timeout: 60000
     iconPath: /jina-icon.svg
 
-  # Notion - Database & Page Management (Direct Token Auth)
+  # Notion - Database & Page Management (Token-based)
   notion-mcp:
     type: stdio
     command: npx
     args:
       - '-y'
-      - 'mcp-remote'
-      - 'https://mcp.notion.com/mcp'
-      - '--header'
-      - 'Authorization: Bearer ${NOTION_TOKEN}'
+      - '@modelcontextprotocol/server-notion'
+    env:
+      NOTION_TOKEN: '${NOTION_TOKEN}'
     timeout: 60000
     iconPath: /notion-icon.svg
 
