@@ -64,7 +64,7 @@ mcpServers:
     iconPath: /railway-icon.svg
 
   github:
-    type: streamablehttp
+    type: http
     url: https://api.githubcopilot.com/mcp
     timeout: 60000
     iconPath: /github-icon.svg
@@ -97,7 +97,7 @@ mcpServers:
 
   # Workflow Automation
   n8n-railway:
-    type: streamablehttp
+    type: http
     url: https://czlonkowskin8n-mcp-railwaylatest-production-23d6.up.railway.app/mcp
     headers:
       Authorization: Bearer ${N8N_MCP_API_KEY}
@@ -123,14 +123,14 @@ mcpServers:
     iconPath: /supabase-icon.svg
 
   gomarble:
-    type: streamablehttp
+    type: http
     url: https://apps.gomarble.ai/mcp-api/mcp
     timeout: 60000
     iconPath: /gomarble-icon.svg
 
   # Marketing & Ads
   apify-fb-ads:
-    type: streamablehttp
+    type: http
     url: https://mcp.apify.com/?actors=igolaizola/facebook-ad-library-scraper
     headers:
       Authorization: Bearer ${APIFY_API_KEY}
@@ -139,7 +139,7 @@ mcpServers:
 
   # Memory & AI Enhancement
   quinns-memory:
-    type: streamablehttp
+    type: http
     url: https://server.smithery.ai/@quinnbmay/quinns-memory-mcp-server/mcp?api_key=${QUINNS_MEMORY_API_KEY}&profile=${QUINNS_MEMORY_PROFILE}
     timeout: 60000
     iconPath: /memory-icon.svg
@@ -154,20 +154,20 @@ mcpServers:
 
   # Documentation & Knowledge
   docfork-mcp:
-    type: streamablehttp
+    type: http
     url: https://server.smithery.ai/@docfork/mcp/mcp
     timeout: 60000
     iconPath: /docs-icon.svg
 
   upstash-context-7-mcp:
-    type: streamablehttp
+    type: http
     url: https://server.smithery.ai/@upstash/context7-mcp/mcp
     timeout: 60000
     iconPath: /context7-icon.svg
 
   # Migration & Development Tools
   smithery-ai-migration-guide:
-    type: streamablehttp
+    type: http
     url: https://server.smithery.ai/@smithery-ai/migration-guide-mcp/mcp
     timeout: 60000
     iconPath: /smithery-icon.svg
