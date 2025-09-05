@@ -1,0 +1,41 @@
+# Brain Emoji Favicon Setup Instructions 🧠
+
+## How to Get the Brain Emoji Favicon Files:
+
+1. **Download from Favicon.io**:
+   - Go to: https://favicon.io/emoji-favicons/brain/
+   - Click "Download" to get the complete favicon package
+
+2. **Files You'll Receive**:
+   - favicon.ico (main favicon file)
+   - favicon-16x16.png
+   - favicon-32x32.png
+   - apple-touch-icon.png
+   - android-chrome-192x192.png
+   - android-chrome-512x512.png
+   - site.webmanifest
+
+## Railway Deployment Options:
+
+### Option A: Static File Serving (Recommended for Railway)
+1. Create a `public/assets/` folder in your LibreChat repo
+2. Place all favicon files in this folder
+3. Add environment variable: `FAVICON_URL=🧠` or point to the hosted files
+
+### Option B: CDN Hosting
+1. Upload favicon files to a CDN (Cloudinary, AWS S3, etc.)
+2. Update LibreChat environment variables to point to CDN URLs
+
+### Option C: Docker Volume Override
+If using Docker deployment:
+```yaml
+volumes:
+  - ./assets/favicon.ico:/app/client/public/favicon.ico
+  - ./assets/favicon-16x16.png:/app/client/public/assets/favicon-16x16.png
+  - ./assets/favicon-32x32.png:/app/client/public/assets/favicon-32x32.png
+```
+
+## Next Steps:
+1. Download the brain emoji favicon package from favicon.io
+2. Choose deployment method based on your Railway setup
+3. Test in incognito window to bypass browser caching
