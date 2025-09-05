@@ -127,6 +127,22 @@ fileConfig:
   serverFileSizeLimit: 500
   avatarSizeLimit: 5
 
+# Code Interpreter configuration
+codeInterpreter:
+  enabled: true
+  apiKey: '${LIBRECHAT_CODE_API_KEY}'
+  baseURL: 'https://api.librechat.ai/v1'
+  timeout: 30000
+  supportedLanguages:
+    - 'python'
+    - 'javascript' 
+    - 'typescript'
+    - 'go'
+    - 'java'
+    - 'cpp'
+    - 'rust'
+    - 'r'
+
 # Memory configuration for user context
 memory:
   disabled: false
