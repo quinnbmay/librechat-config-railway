@@ -190,6 +190,7 @@ endpoints:
         x-librechat-body-parentmessageid: '{{LIBRECHAT_BODY_PARENTMESSAGEID}}'
       models:
         default: 
+          - 'openrouter/auto'
           - 'meta-llama/llama-3.3-70b-instruct'
           - 'anthropic/claude-3.5-sonnet'
           - 'openai/gpt-4o'
