@@ -59,13 +59,13 @@ mcpServers:
     timeout: 60000
     iconPath: /railway-icon.svg
 
-  # Web Development & Design
+  # Web Development & Design (Remote OAuth)
   webflow:
     type: stdio
     command: npx
     args:
-      - '-y'
-      - 'webflow-mcp-server@0.6.0'
+      - 'mcp-remote'
+      - 'https://mcp.webflow.com/sse'
     timeout: 60000
     iconPath: /webflow-icon.svg
 
