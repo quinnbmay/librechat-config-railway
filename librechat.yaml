@@ -107,6 +107,17 @@ mcpServers:
     timeout: 60000
     iconPath: /jina-icon.svg
 
+  # Notion - Database & Page Management
+  notion-mcp:
+    type: stdio
+    command: npx
+    args:
+      - '-y'
+      - 'mcp-remote'
+      - 'https://mcp.notion.com/mcp'
+    timeout: 60000
+    iconPath: /notion-icon.svg
+
 # Endpoints configuration - OpenRouter Only
 endpoints:
   custom:
