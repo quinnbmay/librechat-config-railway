@@ -31,11 +31,6 @@ interface:
     use: false
   fileCitations: true
 
-# Custom branding
-customFooter: 'Combined Memory 🧠 - AI Chat with Memory & MCP Tools'
-helpAndFaqURL: 'https://combinedmemory.com/help'
-favicon: '/favicon.svg'
-
 # Registration configuration
 registration:
   socialLogins: ['github', 'google', 'discord']
