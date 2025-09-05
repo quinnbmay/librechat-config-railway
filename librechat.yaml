@@ -67,7 +67,7 @@ mcpServers:
       - '-y'
       - 'webflow-mcp-server'
     env:
-      WEBFLOW_API_TOKEN: '${WEBFLOW_API_TOKEN}'
+      WEBFLOW_TOKEN: '${WEBFLOW_TOKEN}'
     timeout: 60000
     iconPath: /webflow-icon.svg
 
