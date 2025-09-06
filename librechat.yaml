@@ -59,6 +59,8 @@ mcpServers:
     command: npx
     args:
       - '@jasontanswe/railway-mcp'
+    env:
+      RAILWAY_TOKEN: 'ce075fe8-1873-4d61-a67a-f65a698ae3ec'
     timeout: 60000
     iconPath: /railway-icon.svg
 
