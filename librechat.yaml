@@ -218,6 +218,14 @@ fileConfig:
 # Note: Code Interpreter is configured via environment variables
 # LIBRECHAT_CODE_API_KEY is set in Railway environment
 
+# Speech configuration - ElevenLabs TTS Integration
+speech:
+  tts:
+    elevenlabs:
+      apiKey: '${TTS_API_KEY}'
+      model: 'eleven_multilingual_v2'
+      voices: ['REPLACE_WITH_VOICE_ID']
+
 # Memory configuration for user context
 memory:
   disabled: false
