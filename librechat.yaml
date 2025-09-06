@@ -116,6 +116,13 @@ mcpServers:
     timeout: 60000
     iconPath: /notion-icon.svg
 
+  # Upstash Context7 - Documentation & Code Examples (Smithery-hosted)
+  upstash-context7:
+    type: http
+    url: https://server.smithery.ai/@upstash/context7-mcp/mcp?api_key=c0696122-7da9-4c99-84e2-1798ce74a954&profile=given-narwhal-PvFXc4
+    timeout: 60000
+    iconPath: /upstash-icon.svg
+
 # Endpoints configuration - OpenRouter + Agents
 endpoints:
   # AI Agents Configuration
