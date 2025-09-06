@@ -224,7 +224,7 @@ speech:
     elevenlabs:
       apiKey: '${TTS_API_KEY}'
       model: 'eleven_multilingual_v2'
-      voices: ['REPLACE_WITH_VOICE_ID']
+      voices: ['MnUw1cSnpiLoLhpd3Hqp']
 
 # Memory configuration for user context
 memory:
