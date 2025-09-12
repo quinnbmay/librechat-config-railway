@@ -312,8 +312,15 @@ fileConfig:
 # Note: Code Interpreter is configured via environment variables
 # LIBRECHAT_CODE_API_KEY is set in Railway environment
 
-# Speech configuration - ElevenLabs TTS Integration
+# Speech configuration - ElevenLabs TTS + OpenAI Whisper STT Integration
 speech:
+  # Speech-to-Text (STT) - OpenAI Whisper
+  stt:
+    openai:
+      apiKey: '${OPENAI_API_KEY}'
+      model: 'whisper-1'
+  
+  # Text-to-Speech (TTS) - ElevenLabs
   tts:
     elevenlabs:
       apiKey: '${TTS_API_KEY}'
