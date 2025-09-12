@@ -185,10 +185,10 @@ endpoints:
       apiKey: "BZljLE1tQUIbMfu3BtGOP8EGGmFlmJLd"
       baseURL: "https://api.mistral.ai/v1"
       models:
-        default: ["mistral-tiny", "mistral-small", "mistral-medium", "mistral-large-latest"]
+        default: ["ministral-3b-2410", "mistral-small-2409", "mistral-large-2411"]
         fetch: true
       titleConvo: true
-      titleModel: "mistral-tiny"
+      titleModel: "ministral-3b-2410"
       modelDisplayLabel: "Mistral"
       dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]
     
