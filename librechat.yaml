@@ -288,7 +288,7 @@ speech:
     elevenlabs:
       apiKey: '${TTS_API_KEY}'
       model: 'eleven_multilingual_v2'
-      voices: ['Rachel']
+      voices: ['21m00Tcm4TlvDq8ikWAM']
       voice_settings:
         similarity_boost: 0.75
         stability: 0.50
