@@ -266,19 +266,6 @@ fileConfig:
 # Note: Code Interpreter is configured via environment variables
 # LIBRECHAT_CODE_API_KEY is set in Railway environment
 
-# Speech configuration - Fully disabled due to missing TTS API keys
-# Uncomment and configure when ElevenLabs API key is available
-# speech:
-#   tts:
-#     elevenlabs:
-#       apiKey: '${TTS_API_KEY}'
-#       model: 'eleven_multilingual_v2'
-#       voices: ['21m00Tcm4TlvDq8ikWAM']  # Rachel voice ID
-#   stt:
-#     openai:
-#       apiKey: '${OPENAI_API_KEY}'
-#       model: 'whisper-1'
-
 # Balance API explicitly disabled to prevent 404 errors
 balance:
   enabled: false
