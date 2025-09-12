@@ -9,6 +9,7 @@ cache: true
 
 # File storage configuration
 fileStrategy: "local"
+uploadPath: "/app/uploads"
 
 # Custom interface configuration
 interface:
@@ -23,6 +24,9 @@ interface:
   bookmarks: true
   multiConvo: true
   agents: true
+  # Mobile optimization settings
+  mobileOptimized: true
+  lazyLoading: false
   peoplePicker:
     users: true
     groups: true
@@ -50,6 +54,17 @@ actions:
     - 'google.serper.dev'
     - 'jina.ai'
     - 'mcp.jina.ai'
+    - 'res.cloudinary.com'
+    - 'railway.app'
+    - 'webflow.com'
+    - 'n8n.io'
+    - 'jina.ai'
+    - 'notion.so'
+    - 'upstash.com'
+    - 'github.com'
+    - 'steel-browser.com'
+    - 'api-production-98ab.up.railway.app'
+    - 'ui-production-b17b.up.railway.app'
 
 # MCP Servers Configuration - Essential Only
 mcpServers:
@@ -62,7 +77,7 @@ mcpServers:
     env:
       RAILWAY_TOKEN: 'ce075fe8-1873-4d61-a67a-f65a698ae3ec'
     timeout: 60000
-    iconPath: /railway-icon.svg
+    iconPath: https://railway.app/favicon.ico
 
   # Web Development & Design (Local API Token)
   webflow:
@@ -74,7 +89,7 @@ mcpServers:
     env:
       WEBFLOW_TOKEN: '${WEBFLOW_TOKEN}'
     timeout: 60000
-    iconPath: /webflow-icon.svg
+    iconPath: https://webflow.com/favicon.ico
 
   # Workflow Automation
   n8n-railway:
@@ -87,14 +102,14 @@ mcpServers:
       - '--header'
       - 'Authorization: Bearer cwmWLcSwK2jIuwCAgtYeDDwztEkc1afLomiFszDd8Fc='
     timeout: 60000
-    iconPath: /n8n-icon.svg
+    iconPath: https://n8n.io/favicon.ico
 
   # Memory & AI Enhancement
   quinns-memory:
     type: http
     url: https://server.smithery.ai/@quinnbmay/quinns-memory-mcp-server/mcp?api_key=${QUINNS_MEMORY_API_KEY}&profile=${QUINNS_MEMORY_PROFILE}
     timeout: 60000
-    iconPath: /memory-icon.svg
+    iconPath: https://res.cloudinary.com/dfctldgya/image/upload/v1757455636/uewnvovkzpr46dyfaia3.png
 
   # Document Processing & AI Analysis
   jina-mcp-server:
@@ -107,21 +122,41 @@ mcpServers:
       - '--header'
       - 'Authorization: Bearer ${JINA_API_KEY}'
     timeout: 60000
-    iconPath: /jina-icon.svg
+    iconPath: https://jina.ai/favicon.ico
 
   # Notion - Database & Page Management (Smithery-hosted)
   notion-mcp:
     type: http
     url: https://server.smithery.ai/@smithery/notion/mcp?api_key=c0696122-7da9-4c99-84e2-1798ce74a954&profile=given-narwhal-PvFXc4
     timeout: 60000
-    iconPath: /notion-icon.svg
+    iconPath: https://notion.so/images/favicon.ico
 
   # Upstash Context7 - Documentation & Code Examples (Smithery-hosted)
   upstash-context7:
     type: http
     url: https://server.smithery.ai/@upstash/context7-mcp/mcp?api_key=c0696122-7da9-4c99-84e2-1798ce74a954&profile=given-narwhal-PvFXc4
     timeout: 60000
-    iconPath: /upstash-icon.svg
+    iconPath: https://upstash.com/favicon.ico
+
+  # GitHub - Repository Management & Copilot Integration (Smithery-hosted)
+  github:
+    type: http
+    url: https://server.smithery.ai/@smithery-ai/github/mcp?api_key=c0696122-7da9-4c99-84e2-1798ce74a954&profile=given-narwhal-PvFXc4
+    timeout: 60000
+    iconPath: https://github.com/favicon.ico
+
+  # Steel Browser - Live Browser Sessions in Chat
+  steel-browser:
+    type: stdio
+    command: npx
+    args:
+      - '-y'
+      - 'steel-browser-mcp-server'
+    env:
+      STEEL_API_KEY: '${STEEL_API_KEY}'
+      STEEL_BASE_URL: 'https://api-production-98ab.up.railway.app'
+    timeout: 60000
+    iconPath: https://steel-browser.com/favicon.ico
 
   # GitHub - Repository Management & Copilot Integration (Smithery-hosted)
   github:
@@ -251,8 +286,33 @@ fileConfig:
         - "application/pdf"
         - "text/.*"
         - "application/vnd.openxmlformats-officedocument.*"
+    openAI:
+      fileLimit: 10
+      fileSizeLimit: 50
+      totalSizeLimit: 200
+      supportedMimeTypes:
+        - "image/.*"
+        - "application/pdf"
+        - "text/.*"
+        - "application/vnd.openxmlformats-officedocument.*"
+    custom:
+      fileLimit: 10
+      fileSizeLimit: 50
+      totalSizeLimit: 200
+      supportedMimeTypes:
+        - "image/.*"
+        - "application/pdf"
+        - "text/.*"
+        - "application/vnd.openxmlformats-officedocument.*"
     default:
-      totalSizeLimit: 100
+      fileLimit: 10
+      fileSizeLimit: 50
+      totalSizeLimit: 200
+      supportedMimeTypes:
+        - "image/.*"
+        - "application/pdf"
+        - "text/.*"
+        - "application/vnd.openxmlformats-officedocument.*"
   serverFileSizeLimit: 500
   avatarSizeLimit: 5
 
