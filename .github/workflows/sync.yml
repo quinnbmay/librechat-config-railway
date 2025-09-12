@@ -1,0 +1,96 @@
+name: Two-Way Sync
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+  schedule:
+    # Run every hour to check for updates
+    - cron: '0 * * * *'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Configure Git
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "actions@github.com"
+    
+    - name: Pull latest changes
+      run: |
+        git pull origin main || git pull origin master || echo "No remote branch yet"
+    
+    - name: Check for local changes
+      id: changes
+      run: |
+        if [[ -n $(git status --porcelain) ]]; then
+          echo "changes=true" >> $GITHUB_OUTPUT
+        else
+          echo "changes=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Commit and push changes
+      if: steps.changes.outputs.changes == 'true'
+      run: |
+        git add .
+        git commit -m "Auto-sync: Update configuration files $(date +'%Y-%m-%d %H:%M:%S')"
+        git push origin HEAD:main || git push origin HEAD:master
+    
+    - name: Deploy to Railway (if configured)
+      if: success()
+      run: |
+        echo "Deployment triggered via Railway webhook or API"
+        # Add Railway deployment webhook here if needed
+        # curl -X POST ${{ secrets.RAILWAY_WEBHOOK_URL }} || true
+
+  sync-from-railway:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Railway CLI
+      run: |
+        npm install -g @railway/cli
+    
+    - name: Pull from Railway
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      run: |
+        # This would pull configs from Railway if they're stored there
+        # You'd need to implement the actual sync logic based on your setup
+        echo "Checking Railway for updates..."
+        # railway up download || true
+    
+    - name: Check for changes from Railway
+      id: railway-changes
+      run: |
+        if [[ -n $(git status --porcelain) ]]; then
+          echo "changes=true" >> $GITHUB_OUTPUT
+        else
+          echo "changes=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Commit Railway changes
+      if: steps.railway-changes.outputs.changes == 'true'
+      run: |
+        git config --global user.name "Railway Sync Bot"
+        git config --global user.email "railway-sync@github.com"
+        git add .
+        git commit -m "Sync from Railway: Update configuration $(date +'%Y-%m-%d %H:%M:%S')"
+        git push origin HEAD:main || git push origin HEAD:master

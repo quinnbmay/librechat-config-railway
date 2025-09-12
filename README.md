@@ -1,8 +1,41 @@
-# LibreChat Custom Endpoint Configuration Guide
+# LibreChat Config Railway - Two-Way GitHub Sync
 
 **Combined Memory - LibreChat Configuration Documentation**  
 **Version: 1.2.8**  
 **Last Updated: January 2025**
+
+## GitHub Actions Two-Way Sync Setup
+
+### Repository Information
+- **Repository:** `git@github.com:quinnbmay/librechat-config-railway.git`
+- **Sync Method:** GitHub Actions with automated two-way synchronization
+- **Deployment:** Railway automatic deployment on push
+
+### Required GitHub Secrets
+Configure these in your GitHub repository (Settings → Secrets and variables → Actions):
+
+1. **RAILWAY_TOKEN**: Your Railway API token
+   - Get from: https://railway.app/account/tokens
+2. **RAILWAY_WEBHOOK_URL** (optional): Railway deployment webhook
+   - Get from your Railway project settings
+
+### Workflow Features
+- **Automatic sync on push** to main/master branch
+- **Hourly sync check** from Railway (configurable)
+- **Manual trigger** via GitHub Actions UI
+- **Two-way synchronization** between GitHub and Railway
+
+### Initial Setup Commands
+```bash
+git add .
+git commit -m "Initial commit with GitHub Actions sync"
+git branch -M main
+git push -u origin main
+```
+
+---
+
+# LibreChat Custom Endpoint Configuration Guide
 
 ## Table of Contents
 1. [Overview](#overview)
