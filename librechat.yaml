@@ -160,7 +160,7 @@ endpoints:
     minRelevanceScore: 0.45
 
   # OpenAI Direct Integration - Latest Models
-  openAI:
+  openai:
     apiKey: '${OPENAI_API_KEY}'
     organizationId: '${OPENAI_ORG_ID}'
     models:
@@ -206,7 +206,7 @@ fileConfig:
         - "application/pdf"
         - "text/.*"
         - "application/vnd.openxmlformats-officedocument.*"
-    openAI:
+    openai:
       fileLimit: 10
       fileSizeLimit: 50
       totalSizeLimit: 200
