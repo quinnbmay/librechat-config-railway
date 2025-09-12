@@ -196,76 +196,34 @@ endpoints:
     modelDisplayLabel: "OpenAI"
 
   custom:
-    # OpenRouter - Primary flagship models
-    - name: 'OpenRouter'
-      apiKey: '${OPENROUTER_KEY}'
-      baseURL: 'https://openrouter.ai/api/v1'
+    # Mistral Direct API - Native Mistral Models
+    - name: "Mistral"
+      apiKey: "${MISTRAL_API_KEY}"
+      baseURL: "https://api.mistral.ai/v1"
+      models:
+        default: ["mistral-tiny", "mistral-small", "mistral-medium", "mistral-large-latest"]
+        fetch: true
+      titleConvo: true
+      titleModel: "mistral-tiny"
+      modelDisplayLabel: "Mistral"
+      dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]
+
+    # Google Gemini Direct API - Native Google Models
+    - name: "Google"
+      apiKey: "${GOOGLE_API_KEY}"
+      baseURL: "https://generativelanguage.googleapis.com/v1beta"
       models:
         default: 
-          # OpenAI - Tool Support ✅
-          - 'openai/gpt-4o'
-          - 'openai/gpt-4o-mini'
-          - 'openai/gpt-4-turbo'
-          - 'openai/gpt-4'
-          - 'openai/gpt-3.5-turbo'
-          
-          # Anthropic Claude - Tool Support ✅
-          - 'anthropic/claude-3.5-sonnet'
-          - 'anthropic/claude-3.5-haiku'
-          - 'anthropic/claude-3-opus'
-          - 'anthropic/claude-3-sonnet'
-          - 'anthropic/claude-3-haiku'
-          
-          # Google Gemini/Vertex - Tool Support ✅
-          - 'google/gemini-2.0-flash-exp'
-          - 'google/gemini-1.5-pro'
-          - 'google/gemini-1.5-flash'
-          - 'google/gemini-pro'
-          - 'google/gemini-pro-vision'
-          
-          # Mistral AI - Tool Support ✅
-          - 'mistralai/mistral-large-2411'
-          - 'mistralai/mistral-medium'
-          - 'mistralai/mistral-small'
-          - 'mistralai/codestral-latest'
-          - 'mistralai/pixtral-large-latest'
-          
-          # xAI Grok - Tool Support ✅
-          - 'x-ai/grok-2-1212'
-          - 'x-ai/grok-2-vision-1212'
-          - 'x-ai/grok-beta'
-          
-          # Perplexity - Tool Support ✅
-          - 'perplexity/llama-3.1-sonar-large-128k-online'
-          - 'perplexity/llama-3.1-sonar-small-128k-online'
-          - 'perplexity/llama-3.1-sonar-large-128k-chat'
-          - 'perplexity/llama-3.1-sonar-small-128k-chat'
-          
-          # Meta LLaMA - Tool Support ✅
-          - 'meta-llama/llama-3.3-70b-instruct'
-          - 'meta-llama/llama-3.1-405b-instruct'
-          - 'meta-llama/llama-3.1-70b-instruct'
-          - 'meta-llama/llama-3.2-90b-vision-instruct'
-          
-          # DeepSeek - Tool Support ✅
-          - 'deepseek/deepseek-chat'
-          - 'deepseek/deepseek-coder'
-          
-          # Qwen/Alibaba - Tool Support ✅
-          - 'qwen/qwen-2.5-72b-instruct'
-          - 'qwen/qwen-2.5-coder-32b-instruct'
-          
-          # Additional Tool-Compatible Models
-          - 'cohere/command-r-plus'
-          - 'databricks/dbrx-instruct'
-          - 'microsoft/wizardlm-2-8x22b'
-          
-          
-        fetch: false
+          - "gemini-2.0-flash-exp"
+          - "gemini-1.5-pro-latest"
+          - "gemini-1.5-flash"
+          - "gemini-1.5-flash-8b"
+          - "gemini-pro"
+        fetch: true
       titleConvo: true
-      titleModel: 'meta-llama/llama-3.3-70b-instruct'
-      dropParams: ['stop']
-      modelDisplayLabel: 'OpenRouter'
+      titleModel: "gemini-1.5-flash"
+      modelDisplayLabel: "Google Gemini"
+      dropParams: ["stop", "logit_bias", "user"]
 
 # File configuration
 fileConfig:
@@ -314,6 +272,24 @@ fileConfig:
 
 # Speech configuration - ElevenLabs TTS + OpenAI Whisper STT Integration
 speech:
+  # Speech Tab - Enhanced User Controls & Default Settings
+  speechTab:
+    conversationMode: true
+    advancedMode: true
+    speechToText:
+      engineSTT: "external"
+      languageSTT: "English (US)"
+      autoTranscribeAudio: true
+      decibelValue: -45
+      autoSendText: 0
+    textToSpeech:
+      engineTTS: "external"
+      voice: "Rachel"
+      languageTTS: "en"
+      automaticPlayback: true
+      playbackRate: 1.0
+      cacheTTS: true
+  
   # Speech-to-Text (STT) - OpenAI Whisper
   stt:
     openai:
@@ -326,15 +302,22 @@ speech:
       apiKey: '${TTS_API_KEY}'
       model: 'eleven_multilingual_v2'
       voices: ['21m00Tcm4TlvDq8ikWAM']
+      voice_settings:
+        similarity_boost: 0.75
+        stability: 0.50
+        style: 0.0
+        use_speaker_boost: true
 
 # Balance API configuration for usage monitoring
 balance:
-  enabled: true
+  enabled: false
   providers:
     openai:
       apiKey: '${OPENAI_API_KEY}'
-    openrouter:
-      apiKey: '${OPENROUTER_KEY}'
+    mistral:
+      apiKey: '${MISTRAL_API_KEY}'
+    google:
+      apiKey: '${GOOGLE_API_KEY}'
     elevenlabs:
       apiKey: '${TTS_API_KEY}'
 
@@ -345,8 +328,8 @@ memory:
   tokenLimit: 15000
   personalize: true
   agent:
-    provider: "OpenRouter"
-    model: "openai/gpt-4o-mini"
+    provider: "OpenAI"
+    model: "gpt-4o-mini"
     instructions: "You are Quinn's memory management assistant. Store and organize user information, project context, MCP server configurations, and development preferences accurately with timestamps."
     model_parameters:
       temperature: 0.1
