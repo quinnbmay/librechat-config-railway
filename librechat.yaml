@@ -325,7 +325,7 @@ speech:
     elevenlabs:
       apiKey: '${TTS_API_KEY}'
       model: 'eleven_multilingual_v2'
-      voice: 'MnUw1cSnpiLoLhpd3Hqp'
+      voices: ['21m00Tcm4TlvDq8ikWAM']
 
 # Balance API configuration for usage monitoring
 balance:
