@@ -322,6 +322,7 @@ fileConfig:
 # Speech configuration - ElevenLabs TTS Integration
 speech:
   tts:
+    default: elevenlabs
     elevenlabs:
       apiKey: '${TTS_API_KEY}'
       model: 'eleven_multilingual_v2'
