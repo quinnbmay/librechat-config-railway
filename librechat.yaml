@@ -165,6 +165,10 @@ endpoints:
     organizationId: '${OPENAI_ORG_ID}'
     models:
       default: 
+        # GPT-5 Family - Latest Models
+        - "gpt-5"
+        - "gpt-5-nano"
+        - "gpt-5-mini"
         # GPT-4 Family - Production Models
         - "gpt-4o"
         - "gpt-4o-mini"
@@ -250,7 +254,7 @@ memory:
   personalize: true
   agent:
     provider: "OpenAI"
-    model: "gpt-3.5-turbo"
+    model: "gpt-5-mini"
     instructions: "You are Quinn's memory management assistant. Store and organize user information, project context, MCP server configurations, and development preferences accurately with timestamps."
     model_parameters:
       temperature: 0.1
