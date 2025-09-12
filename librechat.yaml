@@ -165,12 +165,11 @@ endpoints:
     organizationId: '${OPENAI_ORG_ID}'
     models:
       default: 
-        # GPT-5 Family - Latest Models
-        - "gpt-5"
-        - "gpt-5-nano"
-        - "gpt-5-mini"
         # GPT-4 Family - Production Models
         - "gpt-4o"
+        - "gpt-4o-mini"
+        - "gpt-4-turbo"
+        - "gpt-3.5-turbo"
       
     titleConvo: true
     titleModel: "gpt-3.5-turbo"
