@@ -295,18 +295,9 @@ speech:
         style: 0.0
         use_speaker_boost: true
 
-# Balance API configuration for usage monitoring
-balance:
-  enabled: false
-  providers:
-    openai:
-      apiKey: '${OPENAI_API_KEY}'
-    mistral:
-      apiKey: '${MISTRAL_API_KEY}'
-    google:
-      apiKey: '${GOOGLE_API_KEY}'
-    elevenlabs:
-      apiKey: '${TTS_API_KEY}'
+# Balance API disabled to prevent false insufficient funds errors
+# balance:
+#   enabled: false
 
 # Memory configuration for user context
 memory:
