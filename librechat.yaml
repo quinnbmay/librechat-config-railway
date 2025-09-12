@@ -192,34 +192,7 @@ endpoints:
       modelDisplayLabel: "Mistral"
       dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]
     
-    # Codestral - Mistral's Code Generation Model (Added Sep 12, 2025)
-    - name: "Codestral"
-      apiKey: "F8wYBncAJBpeEBCVxzpMfru2fwwyAl5J"
-      baseURL: "https://codestral.mistral.ai/v1"
-      models:
-        default: ["codestral-latest", "codestral-2405"]
-        fetch: true
-      titleConvo: true
-      titleModel: "codestral-latest"
-      modelDisplayLabel: "Codestral (Code AI)"
-      dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]
-
-    # Google Gemini Direct API - Native Google Models
-    - name: "Google"
-      apiKey: "${GOOGLE_API_KEY}"
-      baseURL: "https://generativelanguage.googleapis.com/v1beta"
-      models:
-        default: 
-          - "gemini-2.0-flash-exp"
-          - "gemini-1.5-pro-latest"
-          - "gemini-1.5-flash"
-          - "gemini-1.5-flash-8b"
-          - "gemini-pro"
-        fetch: true
-      titleConvo: true
-      titleModel: "gemini-1.5-flash"
-      modelDisplayLabel: "Google Gemini"
-      dropParams: ["stop", "logit_bias", "user"]
+    # Codestral and Google temporarily removed - API issues to resolve later
 
 # File configuration
 fileConfig:
