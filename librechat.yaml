@@ -315,11 +315,21 @@ fileConfig:
 # Speech configuration - ElevenLabs TTS Integration
 speech:
   tts:
-    default: elevenlabs
     elevenlabs:
       apiKey: '${TTS_API_KEY}'
       model: 'eleven_multilingual_v2'
       voices: ['MnUw1cSnpiLoLhpd3Hqp']
+
+# Balance API configuration for usage monitoring
+balance:
+  enabled: true
+  providers:
+    openai:
+      apiKey: '${OPENAI_API_KEY}'
+    openrouter:
+      apiKey: '${OPENROUTER_KEY}'
+    elevenlabs:
+      apiKey: '${TTS_API_KEY}'
 
 # Memory configuration for user context
 memory:
