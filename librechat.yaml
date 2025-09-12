@@ -259,41 +259,20 @@ fileConfig:
 
 # Speech configuration - ElevenLabs TTS + OpenAI Whisper STT Integration
 speech:
-  # Speech Tab - Enhanced User Controls & Default Settings
-  speechTab:
-    conversationMode: true
-    advancedMode: true
-    speechToText:
-      engineSTT: "external"
-      languageSTT: "English (US)"
-      autoTranscribeAudio: true
-      decibelValue: -45
-      autoSendText: 0
-    textToSpeech:
-      engineTTS: "external"
-      voice: "Rachel"
-      languageTTS: "en"
-      automaticPlayback: true
-      playbackRate: 1.0
-      cacheTTS: true
-  
-  # Speech-to-Text (STT) - OpenAI Whisper
-  stt:
-    openai:
-      apiKey: '${OPENAI_API_KEY}'
-      model: 'whisper-1'
-  
-  # Text-to-Speech (TTS) - ElevenLabs
   tts:
     elevenlabs:
       apiKey: '${TTS_API_KEY}'
       model: 'eleven_multilingual_v2'
-      voices: ['21m00Tcm4TlvDq8ikWAM']
-      voice_settings:
-        similarity_boost: 0.75
-        stability: 0.50
-        style: 0.0
-        use_speaker_boost: true
+      voices: ['202898wioas09d2', 'addwqr324tesfsf', '3asdasr3qrq44w', 'adsadsa']
+  
+  # Speech-to-Text (STT) - OpenAI Whisper
+speech:
+  stt:
+    openai:
+      apiKey: '${STT_API_KEY}'
+      model: 'whisper-1'
+  
+
 
 # Balance API disabled to prevent false insufficient funds errors
 # balance:
@@ -307,7 +286,7 @@ memory:
   personalize: true
   agent:
     provider: "OpenAI"
-    model: "gpt-4o-mini"
+    model: "gpt-5-mini"
     instructions: "You are Quinn's memory management assistant. Store and organize user information, project context, MCP server configurations, and development preferences accurately with timestamps."
     model_parameters:
       temperature: 0.1
