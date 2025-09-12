@@ -167,14 +167,11 @@ endpoints:
       default: 
         # GPT-5 Family - Latest Models
         - "gpt-5"
-        - "gpt-5-turbo"
+        - "gpt-5-nano"
         - "gpt-5-mini"
         # GPT-4 Family - Production Models
         - "gpt-4o"
-        - "gpt-4o-mini"
-        - "gpt-4-turbo"
-        - "gpt-4"
-        - "gpt-3.5-turbo"
+      
     titleConvo: true
     titleModel: "gpt-3.5-turbo"
     summarize: false
@@ -183,9 +180,9 @@ endpoints:
     modelDisplayLabel: "OpenAI"
 
   custom:
-    # Mistral Direct API - Native Mistral Models
+    # Mistral Direct API - Native Mistral Models (Updated Sep 12, 2025)
     - name: "Mistral"
-      apiKey: "${MISTRAL_API_KEY}"
+      apiKey: "BZljLE1tQUIbMfu3BtGOP8EGGmFlmJLd"
       baseURL: "https://api.mistral.ai/v1"
       models:
         default: ["mistral-tiny", "mistral-small", "mistral-medium", "mistral-large-latest"]
@@ -193,6 +190,18 @@ endpoints:
       titleConvo: true
       titleModel: "mistral-tiny"
       modelDisplayLabel: "Mistral"
+      dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]
+    
+    # Codestral - Mistral's Code Generation Model (Added Sep 12, 2025)
+    - name: "Codestral"
+      apiKey: "F8wYBncAJBpeEBCVxzpMfru2fwwyAl5J"
+      baseURL: "https://codestral.mistral.ai/v1"
+      models:
+        default: ["codestral-latest", "codestral-2405"]
+        fetch: true
+      titleConvo: true
+      titleModel: "codestral-latest"
+      modelDisplayLabel: "Codestral (Code AI)"
       dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]
 
     # Google Gemini Direct API - Native Google Models
