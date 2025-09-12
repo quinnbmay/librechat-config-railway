@@ -1,0 +1,14 @@
+# Use this Dockerfile to override LibreChat favicon
+FROM ghcr.io/danny-avila/librechat-dev:latest
+
+# Copy custom favicon to override default
+COPY public/favicon.ico /app/client/public/favicon.ico
+
+# Copy librechat config
+COPY librechat.yaml /app/librechat.yaml
+
+# Expose port
+EXPOSE 3080
+
+# Start the application
+CMD ["npm", "start"]

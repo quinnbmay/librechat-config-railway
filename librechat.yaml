@@ -9,7 +9,6 @@ cache: true
 
 # File storage configuration
 fileStrategy: "local"
-uploadPath: "/app/uploads"
 
 # Custom interface configuration
 interface:
