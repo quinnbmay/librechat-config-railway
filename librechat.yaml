@@ -1,8 +1,8 @@
 # LibreChat Configuration - Simplified Setup
 # Combined Memory - LibreChat 🪶 Production Configuration
-# Version: 1.2.8 - Updated TTS Config
+# Version: 1.2.9 - Fixed OpenAI Models
 
-version: 1.2.8
+version: 1.2.9
 
 # Cache settings
 cache: true
@@ -159,20 +159,17 @@ endpoints:
     maxCitationsPerFile: 7
     minRelevanceScore: 0.45
 
-  # OpenAI Direct Integration - Latest Models
+  # OpenAI Direct Integration - Valid Models Only
   openAI:
     apiKey: '${OPENAI_API_KEY}'
     organizationId: '${OPENAI_ORG_ID}'
     models:
       default: 
-        # GPT-5 Family - Latest Models
-        - "gpt-5"
-        - "gpt-5-nano"
-        - "gpt-5-mini"
         # GPT-4 Family - Production Models
         - "gpt-4o"
         - "gpt-4o-mini"
         - "gpt-4-turbo"
+        - "gpt-4"
         - "gpt-3.5-turbo"
       
     titleConvo: true
@@ -254,7 +251,7 @@ memory:
   personalize: true
   agent:
     provider: "OpenAI"
-    model: "gpt-5-mini"
+    model: "gpt-4o-mini"
     instructions: "You are Quinn's memory management assistant. Store and organize user information, project context, MCP server configurations, and development preferences accurately with timestamps."
     model_parameters:
       temperature: 0.1
