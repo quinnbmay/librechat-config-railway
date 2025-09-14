@@ -1,8 +1,8 @@
 # LibreChat Configuration - Simplified Setup
 # Combined Memory - LibreChat 🪶 Production Configuration
-# Version: 1.2.9 - Fixed OpenAI Models
+# Version: 1.2.10 - Add OpenRouter, fix memory agent formatting
 
-version: 1.2.9
+version: 1.2.10
 
 # Cache settings
 cache: true
@@ -67,7 +67,6 @@ actions:
 
 # MCP Servers Configuration - Essential Only
 mcpServers:
-  # Development & Project Management
   railway:
     type: stdio
     command: npx
@@ -78,7 +77,6 @@ mcpServers:
     timeout: 60000
     iconPath: https://railway.app/favicon.ico
 
-  # Web Development & Design (Local API Token)
   webflow:
     type: stdio
     command: npx
@@ -90,7 +88,6 @@ mcpServers:
     timeout: 60000
     iconPath: https://webflow.com/favicon.ico
 
-  # Workflow Automation
   n8n-railway:
     type: stdio
     command: npx
@@ -103,14 +100,12 @@ mcpServers:
     timeout: 60000
     iconPath: https://n8n.io/favicon.ico
 
-  # Memory & AI Enhancement
   quinns-memory:
     type: http
     url: https://server.smithery.ai/@quinnbmay/quinns-memory-mcp-server/mcp?api_key=${QUINNS_MEMORY_API_KEY}&profile=${QUINNS_MEMORY_PROFILE}
     timeout: 60000
     iconPath: https://res.cloudinary.com/dfctldgya/image/upload/v1757455636/uewnvovkzpr46dyfaia3.png
 
-  # Document Processing & AI Analysis
   jina-mcp-server:
     type: stdio
     command: npx
@@ -123,33 +118,26 @@ mcpServers:
     timeout: 60000
     iconPath: https://jina.ai/favicon.ico
 
-  # Notion - Database & Page Management (Smithery-hosted)
   notion-mcp:
     type: http
     url: https://server.smithery.ai/@smithery/notion/mcp?api_key=c0696122-7da9-4c99-84e2-1798ce74a954&profile=given-narwhal-PvFXc4
     timeout: 60000
     iconPath: https://notion.so/images/favicon.ico
 
-  # Upstash Context7 - Documentation & Code Examples (Smithery-hosted)
   upstash-context7:
     type: http
     url: https://server.smithery.ai/@upstash/context7-mcp/mcp?api_key=c0696122-7da9-4c99-84e2-1798ce74a954&profile=given-narwhal-PvFXc4
     timeout: 60000
     iconPath: https://upstash.com/favicon.ico
 
-  # GitHub - Repository Management & Copilot Integration (Smithery-hosted)
   github:
     type: http
     url: https://server.smithery.ai/@smithery-ai/github/mcp?api_key=c0696122-7da9-4c99-84e2-1798ce74a954&profile=given-narwhal-PvFXc4
     timeout: 60000
     iconPath: https://github.com/favicon.ico
 
-# Steel Browser - Removed due to package not found error
-
-
-# Endpoints configuration - OpenRouter + Agents
+# Endpoints configuration
 endpoints:
-  # AI Agents Configuration
   agents:
     recursionLimit: 50
     maxRecursionLimit: 100
@@ -159,19 +147,16 @@ endpoints:
     maxCitationsPerFile: 7
     minRelevanceScore: 0.45
 
-  # OpenAI Direct Integration - Valid Models Only
   openAI:
     apiKey: '${OPENAI_API_KEY}'
     organizationId: '${OPENAI_ORG_ID}'
     models:
-      default: 
-        # GPT-4 Family - Production Models
+      default:
         - "gpt-4o"
         - "gpt-4o-mini"
         - "gpt-4-turbo"
         - "gpt-4"
         - "gpt-3.5-turbo"
-      
     titleConvo: true
     titleModel: "gpt-3.5-turbo"
     summarize: false
@@ -180,7 +165,6 @@ endpoints:
     modelDisplayLabel: "OpenAI"
 
   custom:
-    # Mistral Direct API - Native Mistral Models (Updated Sep 12, 2025)
     - name: "Mistral"
       apiKey: "BZljLE1tQUIbMfu3BtGOP8EGGmFlmJLd"
       baseURL: "https://api.mistral.ai/v1"
@@ -191,8 +175,19 @@ endpoints:
       titleModel: "ministral-3b-2410"
       modelDisplayLabel: "Mistral"
       dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]
-    
-    # Codestral and Google temporarily removed - API issues to resolve later
+
+    - name: "openrouter"
+      apiKey: "${OPENROUTER_KEY}"
+      baseURL: "https://openrouter.ai/api/v1"
+      models:
+        default: ["openrouter/auto", "openai/gpt-4o-mini", "anthropic/claude-3-5-sonnet"]
+        fetch: true
+      titleConvo: true
+      modelDisplayLabel: "OpenRouter"
+      headers:
+        HTTP-Referer: "https://chat.combinedmemory.com"
+        X-Title: "Combined Memory"
+      dropParams: ["user"]
 
 # File configuration
 fileConfig:
@@ -236,14 +231,9 @@ fileConfig:
   serverFileSizeLimit: 500
   avatarSizeLimit: 5
 
-# Note: Code Interpreter is configured via environment variables
-# LIBRECHAT_CODE_API_KEY is set in Railway environment
-
-# Balance API explicitly disabled to prevent 404 errors
 balance:
   enabled: false
 
-# Memory configuration for user context
 memory:
   disabled: false
   validKeys: ["preferences", "work_info", "personal_info", "skills", "interests", "context", "projects", "mcp_configs"]
